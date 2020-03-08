@@ -1,3 +1,8 @@
+/**
+ * Test 2 WEDB6201 - Client Side Scripting
+ * Author: Luis Grijalva 100719475
+ * Date: 3/8/2020
+ */
 class Contact
 {
     constructor(contactName = "", emailAddress = "", contactNumber = "", contactMessage = "")
@@ -102,6 +107,16 @@ let app;
 
         // Task 1 a
         $("#newTaskButton").on("click", function(){
+            //Get any li element and clone it
+            let clonedTask = $("#taskList").children().last().clone();
+            //Assign a new ID
+            $(clonedTask).attr("id","newTask");
+            //Get the text from the input
+            let tastText= $(taskTextInput).val();
+            //Set the text to the task
+            $(clonedTask).find('span#taskText').text(tastText);
+            //Append it to the task list
+            $("#taskList").append(clonedTask);
             
         });
 
