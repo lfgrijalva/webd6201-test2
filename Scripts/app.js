@@ -122,9 +122,27 @@ let app;
 
         // Task 1 b
         $("ul").on("click", ".editButton", function(){
-           
-        });
+            //Get the li element containing the button that was pressed
+           let parentLI = $(this).parent().parent()[0];
+           //Get the edit text input
+           let editText =$(parentLI).find(".editTextInput");
+           //Show the input
+           $(editText).show(); 
 
+           //Define the "press enter" event on the textbutton
+           $(editText).on('keypress', function (e) {
+               //13 is keycode for enter
+               if (e.which ==13) {
+                   //Get the text on the textbox
+                   let editString = $(this).val();
+                   //Set the text to the span element
+                   $(parentLI).find("span#taskText").text(editString);
+                   //Hide the edit text input
+                   $(this).hide();
+               }
+           });
+
+        });
         // Task 1 c
         $("ul").on("click", ".deleteButton", function(){
            
