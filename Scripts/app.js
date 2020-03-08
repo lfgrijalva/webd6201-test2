@@ -145,7 +145,13 @@ let app;
         });
         // Task 1 c
         $("ul").on("click", ".deleteButton", function(){
-           
+            //Get the li element containing the button that was pressed
+            let parentLI = $(this).parent().parent()[0];
+            //Show a confirm dialog, if yes, delete
+            if (confirm("Are you sure?")) {
+                //Remove the li element from the DOM
+                $(parentLI).remove();
+            }
         });
     }
 
